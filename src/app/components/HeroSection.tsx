@@ -60,11 +60,13 @@ export function HeroSection() {
           <div className="relative mb-12 md:mb-20">
             {/* Main Image - rotated (no animation) */}
             <div className="relative mx-auto w-64 md:w-96 lg:w-[500px] transform -rotate-3 hover:rotate-0 transition-transform duration-500">
-              <img 
-                src={imgImageFx111} 
-                alt="Hero" 
-                className="w-full rounded-lg shadow-2xl border-4 border-white"
-              />
+              {/* 
+<img 
+  src={imgImageFx111} 
+  alt="Hero" 
+  className="w-full rounded-lg shadow-2xl border-4 border-white"
+/>
+*/}
               <div className="absolute -inset-1 bg-gradient-to-r from-[#78D7D4] to-[#0ABAB5] opacity-50 blur-lg -z-10" />
             </div>
 
