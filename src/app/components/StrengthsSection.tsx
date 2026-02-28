@@ -1,64 +1,48 @@
-import { Trophy, Target, Rocket } from "lucide-react";
-import { motion } from "motion/react";
-import { useInView } from "motion/react";
-import { useRef } from "react";
-
 export function StrengthsSection() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
-
   const strengths = [
-    {
-      icon: <Trophy className="w-8 h-8" />,
-      title: "戦略設計",
-      text: "感覚ではなく、データに基づいた成長戦略を構築します。"
-    },
-    {
-      icon: <Target className="w-8 h-8" />,
-      title: "個別サポート",
-      text: "一人ひとりに合わせた伴走型マネジメント。"
-    },
-    {
-      icon: <Rocket className="w-8 h-8" />,
-      title: "爆発的拡散力",
-      text: "SNS・企画・コラボ設計で拡張させます。"
-    }
+    "専属マネージャーによる戦略サポート",
+    "個別分析×改善サポート",
+    "AIによるデータ戦略設計",
+    "配信中のAI支援",
+    "事務所からの案件紹介",
+    "目標ロードマップ設計"
   ];
 
   return (
-    <section
-      ref={ref}
-      id="strengths"
-      className="py-20 bg-[#111827] text-white"
-    >
-      <div className="container mx-auto px-4 text-center">
+    <section className="relative py-28 bg-[#071022] overflow-hidden">
+      
+      {/* ネオングリッド背景 */}
+      <div className="absolute inset-0 opacity-20"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(0,255,255,0.2) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0,255,255,0.2) 1px, transparent 1px)
+          `,
+          backgroundSize: '40px 40px'
+        }}
+      />
 
-        <h2 className="text-3xl md:text-5xl font-bold mb-12">
-          CoCo Lab.の強み
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
+
+        <h2 className="text-center text-4xl md:text-5xl font-bold text-white mb-16">
+          CoCo Lab.の<span className="text-cyan-400 drop-shadow-[0_0_15px_#22d3ee]">強み</span>
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {strengths.map((item, index) => (
-            <motion.div
-              key={index}
-              className="bg-[#1f2937] p-8 rounded-2xl shadow-xl"
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-            >
-              <div className="mb-4 flex justify-center text-[#78D7D4]">
-                {item.icon}
-              </div>
-              <h3 className="text-xl font-bold mb-3">
-                {item.title}
-              </h3>
-              <p className="text-white/80 text-sm leading-relaxed">
-                {item.text}
-              </p>
-            </motion.div>
-          ))}
-        </div>
+        <div className="grid md:grid-cols-3 gap-8">
 
+          {strengths.map((item, index) => (
+            <div
+              key={index}
+              className="bg-[#0f1b34] border border-cyan-400/40 rounded-xl p-8 text-center
+                         shadow-[0_0_20px_rgba(34,211,238,0.4)]
+                         hover:shadow-[0_0_40px_rgba(34,211,238,0.8)]
+                         transition-all duration-300"
+            >
+              <p className="text-white text-lg">{item}</p>
+            </div>
+          ))}
+
+        </div>
       </div>
     </section>
   );
