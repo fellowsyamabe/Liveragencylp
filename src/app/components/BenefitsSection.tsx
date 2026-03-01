@@ -1,12 +1,4 @@
-import { CheckCircle } from "lucide-react";
-import { motion } from "motion/react";
-import { useInView } from "motion/react";
-import { useRef } from "react";
-
 export function BenefitsSection() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
-
   const benefits = [
     "専属マネージャー制度",
     "案件紹介サポート",
@@ -17,29 +9,38 @@ export function BenefitsSection() {
   ];
 
   return (
-    <section
-      ref={ref}
-      id="benefits"
-      className="py-20 bg-[#0f172a] text-white"
-    >
-      <div className="container mx-auto px-4 text-center">
+    <section className="relative py-28 overflow-hidden">
 
-        <h2 className="text-3xl md:text-5xl font-bold mb-12">
-          CoCo Lab.のサポート体制
+      {/* 背景画像 */}
+      <div className="absolute inset-0">
+        <img
+          src="/Liveragencylp/haikei.png"
+          alt="background"
+          className="w-full h-full object-cover opacity-30"
+        />
+        <div className="absolute inset-0 bg-[#071022]/80" />
+      </div>
+
+      <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
+
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-16">
+          CoCo Labだけの
+          <span className="text-cyan-400 drop-shadow-[0_0_15px_#22d3ee]">
+            福利厚生
+          </span>
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8">
           {benefits.map((item, index) => (
-            <motion.div
+            <div
               key={index}
-              className="flex items-center gap-4 bg-[#1e293b] p-6 rounded-xl shadow-lg"
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="bg-[#0f1b34]/80 border border-cyan-400/40 rounded-xl p-8
+                         shadow-[0_0_20px_rgba(34,211,238,0.4)]
+                         hover:shadow-[0_0_40px_rgba(34,211,238,0.8)]
+                         transition-all duration-300"
             >
-              <CheckCircle className="text-[#78D7D4] w-6 h-6" />
-              <span className="text-left">{item}</span>
-            </motion.div>
+              <p className="text-white text-lg">{item}</p>
+            </div>
           ))}
         </div>
 
