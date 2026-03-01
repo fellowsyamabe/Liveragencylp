@@ -1,103 +1,87 @@
-import { Sparkles, Star } from "lucide-react";
-import { motion } from "motion/react";
-import hero from "/hero.png";
+import { Facebook, Twitter, Instagram, Menu, X } from "lucide-react";
+import svgPaths from "../../imports/svg-b8y292tsky";
+import { useState } from "react";
 
-export function HeroSection() {
+export function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
-    <section
-      id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 bg-[#1a1a2e]"
-    >
-      {/* ネオングリッド背景（薄め） */}
-      <div className="absolute inset-0 z-0">
-        <div
-          className="w-full h-full opacity-10"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(120, 215, 212, 0.2) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(120, 215, 212, 0.2) 1px, transparent 1px)
-            `,
-            backgroundSize: "50px 50px"
-          }}
-        />
-      </div>
+    <>
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-lg border-b-2 border-[#78D7D4]">
+        <div className="container mx-auto px-4 py-3 md:py-4 flex justify-between items-center">
+          {/* Logo */}
+          <div className="relative">
+            <div className="relative h-[25px] md:h-[31px] w-[140px] md:w-[169px] hover:scale-105 transition-transform duration-300">
 
-      {/* 装飾スター */}
-      <motion.div
-        className="absolute top-20 left-10"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6 }}
-      >
-        <Star className="text-[#78D7D4] fill-[#78D7D4] w-6 h-6 animate-pulse" />
-      </motion.div>
+            </div>
+          </div>
 
-      <motion.div
-        className="absolute top-40 right-20"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-      >
-        <Sparkles className="text-white w-10 h-10 opacity-40" />
-      </motion.div>
-
-      {/* コンテンツ */}
-      <div className="relative z-10 container mx-auto px-4">
-        <div className="max-w-6xl mx-auto text-center">
-
-          {/* 画像 */}
-          <div className="relative mb-16">
-            <div className="relative mx-auto w-72 md:w-96 lg:w-[520px] transform -rotate-3 hover:rotate-0 transition-transform duration-500">
-              <img
-                src={hero}
-                alt="Hero"
-                className="w-full rounded-xl shadow-2xl border-4 border-white"
+          {/* Social Links with sketch underline */}
+          <div className="relative hidden md:flex items-center gap-4">
+            <span className="text-xs text-[#1e2f4e] font-medium">Follow us -</span>
+            <div className="flex gap-3">
+              <a href="#" className="text-[#1e2f4e] hover:text-[#78D7D4] transition-all duration-300 hover:scale-110 hover:rotate-12">
+                <Facebook size={20} />
+              </a>
+              <a href="#" className="text-[#1e2f4e] hover:text-[#78D7D4] transition-all duration-300 hover:scale-110 hover:rotate-12">
+                <Twitter size={20} />
+              </a>
+              <a href="#" className="text-[#1e2f4e] hover:text-[#78D7D4] transition-all duration-300 hover:scale-110 hover:rotate-12">
+                <Instagram size={20} />
+              </a>
+            </div>
+            {/* Sketch underline */}
+            <svg className="absolute -bottom-1 left-0 w-full h-1" viewBox="0 0 200 3">
+              <path 
+                d="M 2 1.5 Q 50 2.5 100 1.5 T 198 1.5" 
+                stroke="#78D7D4" 
+                strokeWidth="1.5" 
+                fill="none"
+                strokeLinecap="round"
               />
-              <div className="absolute -inset-2 border-4 border-[#78D7D4] rounded-xl opacity-30" />
-            </div>
-
-            {/* 右側円装飾 */}
-            <div className="absolute top-10 -right-10 w-24 h-24 border-4 border-[#78D7D4] rounded-full opacity-30" />
+            </svg>
           </div>
 
-          {/* キャッチコピー */}
-          <div className="space-y-6">
-            <div className="relative inline-block">
-              <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white relative z-10 px-6 py-3">
-                "好き"を仕事にしよう。
-              </h1>
-              <div className="absolute inset-0 bg-[#78D7D4] opacity-30 skew-x-[-2deg]" />
-            </div>
-
-            <div className="inline-block bg-[#78D7D4] px-8 py-4 shadow-lg">
-              <p className="text-3xl md:text-5xl lg:text-6xl text-[#1a1a2e] font-bold">
-                -CoCo Lab.
-              </p>
-            </div>
-
-            <div className="relative mt-6">
-              <p className="text-base md:text-xl text-white/90">
-                次世代ライバーのための戦略型エージェンシー
-              </p>
-
-              {/* 手書き風ネオン下線 */}
-              <svg
-                className="mx-auto mt-3 w-48 md:w-64"
-                viewBox="0 0 200 10"
-              >
-                <path
-                  d="M 5 5 Q 50 2 100 5 T 195 5"
-                  stroke="#78D7D4"
-                  strokeWidth="3"
-                  fill="none"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </div>
-          </div>
-
+          {/* Mobile Menu Button */}
+          <button 
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden text-[#1e2f4e] hover:text-[#78D7D4] transition-colors"
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
-      </div>
-    </section>
+
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden bg-white border-t-2 border-[#78D7D4] shadow-lg">
+            <nav className="container mx-auto px-4 py-4 flex flex-col gap-4">
+              <a href="#about" className="text-[#1e2f4e] hover:text-[#78D7D4] transition-colors font-medium py-2">
+                About
+              </a>
+              <a href="#strengths" className="text-[#1e2f4e] hover:text-[#78D7D4] transition-colors font-medium py-2">
+                Strengths
+              </a>
+              <a href="#benefits" className="text-[#1e2f4e] hover:text-[#78D7D4] transition-colors font-medium py-2">
+                Benefits
+              </a>
+              <a href="#recruit" className="text-[#1e2f4e] hover:text-[#78D7D4] transition-colors font-medium py-2">
+                Recruit
+              </a>
+              <div className="flex gap-4 pt-2 border-t border-gray-200">
+                <a href="#" className="text-[#1e2f4e] hover:text-[#78D7D4] transition-colors">
+                  <Facebook size={20} />
+                </a>
+                <a href="#" className="text-[#1e2f4e] hover:text-[#78D7D4] transition-colors">
+                  <Twitter size={20} />
+                </a>
+                <a href="#" className="text-[#1e2f4e] hover:text-[#78D7D4] transition-colors">
+                  <Instagram size={20} />
+                </a>
+              </div>
+            </nav>
+          </div>
+        )}
+      </header>
+    </>
   );
 }
