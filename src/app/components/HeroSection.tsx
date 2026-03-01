@@ -3,145 +3,116 @@ import { motion } from "motion/react";
 
 export function HeroSection() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 bg-[#1a1a2e]">
-
-      {/* Grid Background */}
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 bg-[#1a1a2e]"
+    >
+      {/* 強化版ネオングリッド */}
       <div className="absolute inset-0 z-0">
-        <div 
-          className="w-full h-full opacity-20"
+        <div
+          className="w-full h-full opacity-40"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(120, 215, 212, 0.2) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(120, 215, 212, 0.2) 1px, transparent 1px)
+              linear-gradient(rgba(120, 215, 212, 0.35) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(120, 215, 212, 0.35) 1px, transparent 1px)
             `,
-            backgroundSize: '50px 50px'
+            backgroundSize: "40px 40px"
           }}
         />
       </div>
 
-      {/* Decorative Stars */}
-      <motion.div 
-        className="absolute top-20 left-10 md:left-20"
-        initial={{ opacity: 0, scale: 0, rotate: -180 }}
-        animate={{ opacity: 1, scale: 1, rotate: 0 }}
-        transition={{ duration: 0.8, delay: 0.2, type: "spring", stiffness: 100 }}
-      >
-        <Star className="text-[#78D7D4] fill-[#78D7D4] w-6 h-6 md:w-8 md:h-8 animate-pulse" />
-      </motion.div>
-
-      <motion.div 
-        className="absolute top-40 right-20 md:right-40"
-        initial={{ opacity: 0, scale: 0, rotate: 180 }}
-        animate={{ opacity: 1, scale: 1, rotate: 0 }}
-        transition={{ duration: 0.8, delay: 0.4, type: "spring", stiffness: 100 }}
-      >
-        <Sparkles className="text-white w-8 h-8 md:w-12 md:h-12 opacity-50" />
-      </motion.div>
-
-      <motion.div 
-        className="absolute bottom-40 left-40"
+      {/* 星装飾 */}
+      <motion.div
+        className="absolute top-20 left-20"
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6, delay: 0.6, type: "spring", stiffness: 150 }}
       >
-        <div className="w-3 h-3 md:w-4 md:h-4 bg-white rounded-full animate-pulse" />
+        <Star className="text-[#78D7D4] fill-[#78D7D4] w-8 h-8 animate-pulse" />
       </motion.div>
 
-      <motion.div 
-        className="absolute top-60 right-10"
+      <motion.div
+        className="absolute top-32 right-32"
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6, delay: 0.8, type: "spring", stiffness: 150 }}
       >
-        <div className="w-2 h-2 md:w-3 md:h-3 bg-[#78D7D4] rounded-full" />
+        <Sparkles className="text-white w-10 h-10 opacity-70" />
       </motion.div>
 
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
+      {/* 右側円装飾（復活） */}
+      <motion.div
+        className="absolute top-40 right-10 md:right-32 w-28 h-28 md:w-40 md:h-40 border-4 border-[#78D7D4] rounded-full opacity-40"
+        initial={{ scale: 0, rotate: -90 }}
+        animate={{ scale: 1, rotate: 0 }}
+        transition={{ duration: 1 }}
+      />
 
-          {/* Main Image */}
-          <div className="relative mb-12 md:mb-20">
-            <div className="relative mx-auto w-64 md:w-96 lg:w-[500px] transform -rotate-3 hover:rotate-0 transition-transform duration-500">
-              <img 
-                src="/Liveragencylp/hero.png"
-                alt="Hero" 
-                className="w-full rounded-lg shadow-2xl border-4 border-white"
-              />
-              <div className="absolute -inset-1 bg-gradient-to-r from-[#78D7D4] to-[#0ABAB5] opacity-50 blur-lg -z-10" />
-            </div>
+      {/* コンテンツ */}
+      <div className="relative z-10 container mx-auto px-4 text-center">
 
-            {/* Decorative Circle */}
-            <motion.div 
-              className="absolute top-10 -right-10 md:-right-20 w-20 h-20 md:w-32 md:h-32 border-4 border-[#78D7D4] rounded-full opacity-30"
-              initial={{ scale: 0, rotate: -90 }}
-              animate={{ scale: 1, rotate: 0 }}
-              transition={{ duration: 1, delay: 0.5, type: "spring", stiffness: 80 }}
+        {/* 画像 */}
+        <div className="relative mb-16">
+          <div className="relative mx-auto w-72 md:w-96 lg:w-[500px] transform -rotate-3 hover:rotate-0 transition-transform duration-500">
+            <img
+              src="/Liveragencylp/hero.png"
+              alt="Hero"
+              className="w-full rounded-lg shadow-2xl border-4 border-white"
             />
-          </div>
-
-          {/* Title */}
-          <div className="text-center space-y-6 md:space-y-8">
-            <motion.div 
-              className="inline-block relative"
-              initial={{ opacity: 0, y: 30, scale: 0.9 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.3, type: "spring", stiffness: 100 }}
-            >
-              <h1 className="text-xl md:text-3xl lg:text-5xl font-bold text-white relative z-10 px-4 md:px-8 py-2 md:py-4">
-                "好き"を仕事にしよう。
-              </h1>
-              <motion.div 
-                className="absolute inset-0 bg-[#78D7D4] opacity-30 skew-x-[-2deg]"
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 0.6, delay: 0.5 }}
-              />
-            </motion.div>
-
-            <motion.div 
-              className="relative inline-block"
-              initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-              animate={{ opacity: 1, scale: 1, rotate: 0 }}
-              transition={{ duration: 0.8, delay: 0.8, type: "spring", stiffness: 100 }}
-            >
-              <div className="bg-[#78D7D4] px-6 md:px-10 py-3 md:py-4 skew-x-[-1deg] shadow-lg">
-                <p className="text-3xl md:text-5xl lg:text-7xl text-[#1a1a2e] font-bold skew-x-[1deg]">
-                  -CoCo Lab.
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div 
-              className="mt-8 md:mt-12 relative"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.3 }}
-            >
-              <p className="text-sm md:text-lg lg:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-                次世代ライバーのための戦略型エージェンシー
-              </p>
-
-              <motion.div 
-                className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-40 md:w-60 h-1 mt-2"
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 0.8, delay: 1.5 }}
-              >
-                <svg viewBox="0 0 200 10" className="w-full">
-                  <path 
-                    d="M 5 5 Q 50 2 100 5 T 195 5" 
-                    stroke="#78D7D4" 
-                    strokeWidth="2" 
-                    fill="none"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </motion.div>
-            </motion.div>
-
+            <div className="absolute -inset-1 bg-gradient-to-r from-[#78D7D4] to-[#0ABAB5] opacity-60 blur-xl -z-10" />
           </div>
         </div>
+
+        {/* タイトル */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="relative inline-block mb-6"
+        >
+          <h1 className="text-2xl md:text-4xl lg:text-6xl font-bold text-white relative z-10 px-6 py-3">
+            "好き"を仕事にしよう。
+          </h1>
+          <motion.div
+            className="absolute inset-0 bg-[#78D7D4] opacity-30 skew-x-[-3deg]"
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          />
+        </motion.div>
+
+        {/* サブタイトル */}
+        <div className="mb-10">
+          <div className="bg-[#78D7D4] inline-block px-12 py-4 skew-x-[-2deg] shadow-lg">
+            <p className="text-4xl md:text-6xl font-bold text-[#1a1a2e] skew-x-[2deg]">
+              -CoCo Lab.
+            </p>
+          </div>
+        </div>
+
+        {/* 説明文 */}
+        <div className="relative inline-block">
+          <p className="text-lg md:text-xl text-white/90 mb-2">
+            次世代ライバーのための戦略型エージェンシー
+          </p>
+
+          {/* 手書きネオン下線（復活） */}
+          <motion.div
+            className="w-60 mx-auto"
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.8, delay: 1 }}
+          >
+            <svg viewBox="0 0 200 10">
+              <path
+                d="M 5 5 Q 50 2 100 5 T 195 5"
+                stroke="#78D7D4"
+                strokeWidth="3"
+                fill="none"
+                strokeLinecap="round"
+              />
+            </svg>
+          </motion.div>
+        </div>
+
       </div>
     </section>
   );
