@@ -8,18 +8,16 @@ export function HeroSection() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 bg-[#1a1a2e]"
     >
       {/* 強化版ネオングリッド */}
-      <div className="absolute inset-0 z-0">
-        <div
-          className="w-full h-full opacity-40"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(120, 215, 212, 0.35) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(120, 215, 212, 0.35) 1px, transparent 1px)
-            `,
-            backgroundSize: "40px 40px"
-          }}
-        />
-      </div>
+      <div
+  className="w-full h-full opacity-20"
+  style={{
+    backgroundImage: `
+      linear-gradient(rgba(120, 215, 212, 0.18) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(120, 215, 212, 0.18) 1px, transparent 1px)
+    `,
+    backgroundSize: "50px 50px"
+  }}
+/>
 
       {/* 星装飾 */}
       <motion.div
