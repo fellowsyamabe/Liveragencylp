@@ -4,8 +4,8 @@ import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
-  // 👇 GitHub Pages用（超重要）
-  base: "/Liveragencylp/"
+  // GitHub Pages用（元のリポジトリ名に戻す）
+  base: "/Liveragencylp/",
 
   plugins: [
     react(),
@@ -18,6 +18,6 @@ export default defineConfig({
     },
   },
 
-  // Figma Make互換設定（消さない）
+  // Figma Make互換設定（そのまま）
   assetsInclude: ["**/*.svg", "**/*.csv"],
-}); 
+});
