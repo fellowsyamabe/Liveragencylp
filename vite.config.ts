@@ -20,4 +20,4 @@ export default defineConfig({
 
   // Figma Make互換設定（消さない）
   assetsInclude: ["**/*.svg", "**/*.csv"],
-});
+}); 
