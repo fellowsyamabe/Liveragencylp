@@ -5,7 +5,7 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   // 👇 GitHub Pages用（超重要）
-  base: "/Liveragencylp/",
+  base: "/CocoLablp/"
 
   plugins: [
     react(),
