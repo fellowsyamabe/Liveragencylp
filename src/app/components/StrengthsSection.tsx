@@ -1,75 +1,100 @@
+import { Star, Sparkles, Zap } from "lucide-react";
+import { motion } from "motion/react";
+import { useInView } from "motion/react";
+import { useRef } from "react";
+
 export function StrengthsSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
+
   const strengths = [
-    {
-      title: "専属マネージャーによる戦略サポート",
-      image: "/Liveragencylp/strengths1.png",
-    },
-    {
-      title: "個別分析×改善サポート",
-      image: "/Liveragencylp/strengths2.png",
-    },
-    {
-      title: "AIによるデータ戦略設計",
-      image: "/Liveragencylp/strengths1.png",
-    },
-    {
-      title: "配信中のAI支援",
-      image: "/Liveragencylp/strengths2.png",
-    },
-    {
-      title: "事務所からの案件紹介",
-      image: "/Liveragencylp/strengths1.png",
-    },
-    {
-      title: "目標ロードマップ設計",
-      image: "/Liveragencylp/strengths2.png",
-    },
+    { title: "専属マネージャー\nによるサポート" },
+    { title: "配信機材の指導等\n配信中のサポート" },
+    { title: "AIによるデータ化\n及び戦略マネジメント" },
+    { title: "配信中の加工及び\n効果音等の指導" },
+    { title: "事務所からの\nプロモート体制の充実" },
+    { title: "日間トップ表彰\n（賞金あり）" },
+  ];
+
+  const descriptionLines = [
+    "配信は、ひとりで頑張らなくていい。",
+    "CoCo Lab.は、ライバーのためのサポートが充実しています。",
+    "マネージャーサポート、データ分析、切り抜き支援、プロモーション支援まで。",
+    "伸び悩みを\"仕組み\"で解決します。"
   ];
 
   return (
-    <section className="relative py-28 bg-[#071022] overflow-hidden">
-      
-      {/* ネオングリッド背景 */}
-      <div
-        className="absolute inset-0 opacity-20"
+    <section ref={ref} id="strengths" className="relative py-20 md:py-28 lg:py-36 overflow-hidden bg-black">
+
+      {/* Grid Background */}
+      <div className="absolute inset-0 opacity-20"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(0,255,255,0.2) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0,255,255,0.2) 1px, transparent 1px)
+            linear-gradient(rgba(0, 255, 255, 0.5) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 255, 255, 0.5) 1px, transparent 1px)
           `,
-          backgroundSize: "40px 40px",
+          backgroundSize: '50px 50px'
         }}
       />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6">
+      {/* ネオンぼかし */}
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full blur-[150px] bg-[#78D7D4] opacity-30" />
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full blur-[150px] bg-[#78D7D4] opacity-30" />
 
-        <h2 className="text-center text-4xl md:text-5xl font-bold text-white mb-16">
-          CoCo Lab.の
-          <span className="text-cyan-400 drop-shadow-[0_0_15px_#22d3ee]">
-            強み
-          </span>
-        </h2>
+      <div className="relative z-10 container mx-auto px-4">
 
-        <div className="grid md:grid-cols-3 gap-10">
+        {/* タイトル */}
+        <div className="text-center mb-16">
+          <h2 className="text-5xl text-white font-bold">
+            CoCo Lab.の
+            <span className="text-cyan-400 relative">
+              強み
+              <span className="absolute inset-0 text-cyan-400 blur-md opacity-70">強み</span>
+            </span>
+          </h2>
+        </div>
 
-          {strengths.map((item, index) => (
-            <div
-              key={index}
-              className="bg-[#0f1b34] border border-cyan-400/40 rounded-xl p-6 text-center
-                         shadow-[0_0_20px_rgba(34,211,238,0.4)]
-                         hover:shadow-[0_0_40px_rgba(34,211,238,0.8)]
-                         transition-all duration-300"
-            >
-              <img
-                src={item.image}
-                alt={item.title}
-                className="w-full h-40 object-cover rounded-lg mb-6"
-              />
-              <p className="text-white text-lg">{item.title}</p>
+        {/* ★ 画像部分：ここだけ修正済み */}
+        <div className="flex justify-center gap-8 flex-wrap mb-16">
+          <div className="relative w-64 transform -rotate-6">
+            <img
+              src="/Liveragencylp/strengths1.png"
+              alt="strength1"
+              className="w-full rounded-lg border-2 border-cyan-400"
+            />
+          </div>
+
+          <div className="relative w-64 transform rotate-6">
+            <img
+              src="/Liveragencylp/strengths2.png"
+              alt="strength2"
+              className="w-full rounded-lg border-2 border-cyan-400"
+            />
+          </div>
+        </div>
+
+        {/* 説明文 */}
+        <div className="text-center text-gray-300 mb-16">
+          {descriptionLines.map((line, index) => (
+            <div key={index}>
+              {line}
+              <br />
             </div>
           ))}
-
         </div>
+
+        {/* 強みカード */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+          {strengths.map((strength, index) => (
+            <div
+              key={index}
+              className="bg-gradient-to-br from-gray-900 via-black to-gray-900 rounded-2xl p-8 border border-cyan-500/30 text-white text-center whitespace-pre-line"
+            >
+              {strength.title}
+            </div>
+          ))}
+        </div>
+
       </div>
     </section>
   );
